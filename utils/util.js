@@ -1,19 +1,25 @@
-const formatTime = date => {
-    const year = date.getFullYear()
-    const month = date.getMonth() + 1
-    const day = date.getDate()
-    const hour = date.getHours()
-    const minute = date.getMinutes()
-    const second = date.getSeconds()
-
-    return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
-}
-
-const formatNumber = n => {
-    n = n.toString()
-    return n[1] ? n : '0' + n
+// 根据时间返回问候语
+const getGreetings = () => {
+    let h = new Date().getHours()
+    let w = ''
+    if (h > 0 && h <= 5) {
+        w = '深夜'
+    } else if (h > 5 && h <= 9) {
+        w = '早上'
+    } else if (h > 9 && h <= 11) {
+        w = '上午'
+    } else if (h > 11 && h <= 13) {
+        w = '中午'
+    } else if (h > 13 && h <= 17) {
+        w = '下午'
+    } else if (h > 17 && h <= 19) {
+        w = '傍晚'
+    } else {
+        w = '晚上'
+    }
+    return `${w}好`
 }
 
 module.exports = {
-    formatTime: formatTime
+    getGreetings
 }

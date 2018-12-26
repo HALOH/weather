@@ -1,21 +1,124 @@
 /**index.wxss**/
+
+.bg {
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.container {
+    font-size: 32rpx;
+    color: #ffffff;
+}
+
+/* 用户信息 */
 .userinfo {
+    margin-top: 20rpx;
+    height: 140rpx;
+    width: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    font-size: 36rpx;
+    transition: all 300ms ease;
 }
 
 .userinfo-avatar {
-    width: 128rpx;
-    height: 128rpx;
+    width: 60rpx;
+    height: 60rpx;
     margin: 20rpx;
     border-radius: 50%;
+    overflow: hidden;
 }
 
-.userinfo-nickname {
-    color: #aaa;
+.userinfo-avatar:after {
+    border: none;
 }
 
-.usermotto {
-    margin-top: 200px;
+.userinfo-nickname::after {
+    border: none;
+}
+
+/* 实时天气 */
+.now {
+    width: 100%;
+    margin-top: 20rpx;
+}
+
+.now-position {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40rpx;
+    margin-bottom: 20rpx;
+}
+
+.now-position image {
+    width: 28rpx;
+    height: 28rpx;
+}
+
+.now-tmp {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-bottom: 20rpx;
+}
+
+.now-tmp--num {
+    font-size: 120rpx;
+}
+
+.now-cond {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20rpx;
+    font-size: 40rpx;
+    margin-bottom: 20rpx;
+}
+
+.now-cond image {
+    width: 60rpx;
+    height: 60rpx;
+}
+
+.now-cond text {
+    margin-left: 10rpx;
+}
+
+.now-items {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20rpx;
+}
+
+.now-items--left,
+.now-items--right {
+    width: 50%;
+    box-sizing: border-box;
+}
+
+.now-items--left > view,
+.now-items--right > view {
+    margin: 10rpx 20rpx;
+}
+
+.now-items--left {
+    text-align: right;
+    border-right: 1px solid #ffffff;
+}
+
+.now-time {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 28rpx;
+    margin-bottom: 20rpx;
+    margin-right: 20rpx;
 }

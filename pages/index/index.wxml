@@ -1,15 +1,42 @@
 <!-- index.wxml -->
+
+<!-- 背景 -->
+<view class="bg" style="background-image:url({{bgImgUrl}})"></view>
+
 <view class="container">
+    <!-- 用户信息 -->
     <view class="userinfo">
-        <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
-            获取头像昵称
-        </button>
-        <block wx:else>
-            <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-            <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-        </block>
+        <open-data type="userAvatarUrl" class="userinfo-avatar" />
+        <text class="userinfo-nickname">{{greetings}}，</text>
+        <open-data type="userNickName" />
     </view>
-    <view class="usermotto">
-        <text class="user-motto">{{motto}}</text>
-    </view> 
+
+    <!-- 实时天气信息 -->
+    <view class="now">
+        <view class="now-position">
+            <text>{{geoDes}}</text>
+            <image src="https://6465-demo-57510e-1257978613.tcb.qcloud.la/miniWeather/images/icon/location_s_w.png" />
+        </view>
+        <view class="now-tmp">
+            <text class="now-tmp--num">{{nowWeather.tmp}}</text>
+            <text>℃</text>
+        </view>
+        <view class="now-cond">
+            <image src="{{nowWeather.condIconUrl}}" />
+            <text>{{nowWeather.condTxt}}</text>
+        </view>
+        <view class="now-items">
+            <view class="now-items--left">
+                <view>{{nowWeather.windDir}} {{nowWeather.windSc}}级</view>
+                <view>湿度 {{nowWeather.hum}}</view>
+            </view>
+            <view class="now-items--right">
+                <view>大气压 {{nowWeather.pres}}</view>
+                <view>降水量 {{nowWeather.pcpn}}</view>
+            </view>
+        </view>
+        <view class="now-time">
+            <text>更新于 {{nowWeather.loc}}</text>
+        </view>
+    </view>
 </view>
