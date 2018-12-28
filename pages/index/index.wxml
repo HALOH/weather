@@ -1,5 +1,4 @@
 <!-- index.wxml -->
-
 <!-- 背景 -->
 <view class="bg" style="background-image:url({{bgImgUrl}})"></view>
 
@@ -14,8 +13,8 @@
     <!-- 实时天气信息 -->
     <view class="now">
         <view class="now-position">
-            <text>{{geoDes}}</text>
-            <image src="https://6465-demo-57510e-1257978613.tcb.qcloud.la/miniWeather/images/icon/location_s_w.png" />
+            <text  catchtap="toSearchPage">{{geoDes}}</text>
+            <image  catchtap="toSearchPage" src="https://6461-data-1f0e99-1258386784.tcb.qcloud.la/weather/images/icon/location.png" />
         </view>
         <view class="now-tmp">
             <text class="now-tmp--num">{{nowWeather.tmp}}</text>
@@ -38,5 +37,76 @@
         <view class="now-time">
             <text>更新于 {{nowWeather.loc}}</text>
         </view>
+    </view>
+
+    <!-- 逐三小时天气 -->
+    <view class="hourly-container">
+        <view class="hourly-title">逐三小时预报</view>
+        <swiper class="hourly" indicator-active-color="#ffffff" indicator-dots="{{true}}">
+            <block wx:for="{{hourlyWeather}}" wx:for-index="times" wx:for-item="trip" wx:key="{{times}}">
+                <swiper-item class="hourly-swiper-item">
+                    <block wx:for="{{trip}}" wx:for-item="item" wx:for-index="index" wx:key="{{index}}">
+                        <view class="hourly-swiper-column">
+                            <view>{{item.date}}</view>
+                            <view>{{item.condTxt}}</view>
+                            <view>
+                                <image class="forecast-icon" src="{{item.condIconUrl}}" />
+                            </view>
+                            <view>{{item.tmp}}℃</view>
+                            <view>{{item.windDir}}</view>
+                            <view>风速{{item.windSc}}级</view>
+                        </view>
+                    </block>
+                </swiper-item>
+            </block>
+        </swiper>
+    </view>
+
+    <!-- 天气预报 -->
+    <view class="forecast-container">
+        <view class="forecast-title">近三天预报</view>
+        <view class="forecast">
+            <view wx:for="{{days}}" wx:key="index" class="forecast-column">
+                <view class="forecast-day">{{item}}</view>
+                <block if="{{dailyWeather.length}}">
+                    <view>{{dailyWeather[index].date}}</view>
+                    <view>{{dailyWeather[index].condTxtD}}</view>
+                    <view>
+                        <image src="{{dailyWeather[index].condDIconUrl}}" class="forecast-icon" mode="aspectFit" />
+                    </view>
+                    <view>{{dailyWeather[index].tmpMin}}℃~{{dailyWeather[index].tmpMax}}℃</view>
+                    <view>
+                        <image src="{{dailyWeather[index].condNIconUrl}}" class="forecast-icon" />
+                    </view>
+                    <view>{{dailyWeather[index].condTxtN}}</view>
+                    <view>{{dailyWeather[index].windDir}}</view>
+                    <view>风速{{dailyWeather[index].windSc}}级</view>
+                </block>
+            </view>
+        </view>
+    </view>
+
+    <!-- 生活指数 -->
+    <view class="lifestyle-container">
+        <view class="lifestyle-title">生活指数</view>
+        <view class="lifestyle">
+            <block wx:if="lifestyle.length">
+                <view wx:for="{{lifestyle}}" wx:key="{{index}}">
+                    <view class="lifestyle-item--pic">
+                        <image class="lifestyle-icon" src="{{lifestyle[index].iconUrl}}" />
+                    </view>
+                    <view class="lifestyle-item--txt">
+                        <view>{{lifestyle[index].iconTxt}}：{{lifestyle[index].brf}}</view>
+                        <view class="lifestyle-item--desc">{{lifestyle[index].txt}}</view>
+                    </view>
+                </view>
+            </block>
+        </view>
+    </view>
+
+    <!-- copyright -->
+    <view class="copyright">
+        <text>developed by HALOH</text>
+        <text>, api by heweather</text>
     </view>
 </view>

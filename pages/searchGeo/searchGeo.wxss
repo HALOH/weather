@@ -1,0 +1,122 @@
+/* miniprogram/pages/searchGeo/searchGeo.wxss */
+
+.search-container {
+  position: relative;
+}
+
+.search-box {
+  display: flex;
+  height: 60rpx;
+  align-items: center;
+  font-size: 30rpx;
+  margin-top: 10rpx;
+  padding-bottom: 20rpx;
+  box-shadow: 0 1px 2px -1px #ccc;
+}
+
+.search-box input {
+  position: relative;
+  border: 1rpx solid #ccc;
+  border-radius: 10rpx;
+  width: calc(100vw - 120rpx);
+  margin: 10rpx 20rpx;
+  box-sizing: border-box;
+  padding-left: 60rpx;
+  height: 62rpx;
+}
+
+.search-box input::before {
+  position: absolute;
+  content: "";
+  display: block;
+  width: 34rpx;
+  height: 34rpx;
+  background-image: url(https://6465-demo-57510e-1257978613.tcb.qcloud.la/miniWeather/images/icon/search_gray.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  top: 50%;
+  left: 10rpx;
+  transform: translateY(-50%);
+}
+
+.search-box .input-placeholder {
+  color: #ccc;
+}
+
+.search-box text {
+  color: #0057d9;
+  margin: 10rpx 20rpx 10rpx 0;
+}
+
+.city-list {
+  display: flex;
+  height: calc(100vh - 92rpx);
+  flex-direction: column;
+}
+
+.city-list-title,
+.city-list-item {
+  padding-left: 20rpx;
+}
+
+.city-list-title {
+  background-color: #eee;
+  font-size: 30rpx;
+  padding-top: 4rpx;
+  padding-bottom: 4rpx;
+}
+.locationCur{
+    height: 32rpx;
+    font-size: 30rpx;
+    width: 200rpx;
+    padding: 10rpx 0;
+    margin: 10rpx 20rpx;
+    border-radius: 8rpx;
+    text-align: center;
+    border: 1px solid #0057d9;
+    color: #0057d9;
+    line-height: 32rpx;
+}
+.locationCur image{
+    width: 28rpx;
+    height: 28rpx;
+}
+
+
+.city-list-item {
+  font-size: 30rpx;
+  line-height: 80rpx;
+  border-bottom: 1rpx solid #eee;
+}
+
+.sugg-container {
+  position: absolute;
+  top: 88rpx;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.sugg-container.no-sugg {
+  background-color: rgba(0, 0, 0, .4);
+}
+
+.sugg-container.has-sugg {
+  background-color: #ffffff;
+}
+
+.sugg-item {
+  border-bottom: 1rpx solid #ccc;
+  padding: 10rpx 20rpx;
+}
+
+.sugg-title {
+  font-size: 30rpx;
+  margin-bottom: 10rpx;
+}
+
+.sugg-desc {
+  font-size: 22rpx;
+  color: #aaa;
+}

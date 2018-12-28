@@ -1,0 +1,29 @@
+<!-- miniprogram/pages/searchGeo/searchGeo.wxml -->
+<view class="search-container">
+    <!-- 搜索框 -->
+    <view class="search-box">
+        <input placeholder="请输入城市关键字搜索" placeholder-class="input-placeholder" bindfocus="focus" bindinput="input" id="input" confirm-type="search" value="{{initValue}}" />
+        <text bindtap="cancelSearch">取消</text>
+    </view>
+    <scroll-view scroll-y="{{true}}" class="city-list" scroll-with-animation="{{true}}" bindscroll="scroll">
+        <view class="locationCur" bindtap="tapSetCurPos">
+            当前位置<image src="https://6461-data-1f0e99-1258386784.tcb.qcloud.la/weather/images/icon/location.png" />
+        </view>
+        <view class="city-list-title" id="title_0">热门城市</view>
+        <!-- 城市列表 -->
+        <block wx:for="{{cityList}}" wx:key="{{index}}">
+            <view bindtap="tapCityItem" data-item="{{item}}" class="city-list-item">
+                {{item.location}}
+            </view>
+        </block>
+    </scroll-view>
+    <!-- 搜索提示 -->
+    <scroll-view class="sugg-container {{searchCls}}" scroll-y="{{true}}" scroll-with-animation="{{true}}" style="display:{{isShowSugg ? 'flex' : 'none'}};">
+        <view class="sugg-list">
+            <view class="sugg-item" wx:for="{{suggList}}" wx:key="{{index}}" data-item="{{item}}" bindtap="tapSuggItem">
+                <view class="sugg-title">{{item.location}}</view>
+                <view class="sugg-desc"><text wx:if="{{item.cnty}}">{{item.cnty}}</text><text  wx:if="{{item.admin_area}}">{{item.admin_area}}</text><text wx:if="{{item.parent_city}}">{{item.parent_city}}</text></view>
+            </view>
+        </view>
+    </scroll-view>
+</view>
